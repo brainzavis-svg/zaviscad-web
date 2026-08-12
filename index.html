@@ -80,6 +80,20 @@
   .nav-cta:hover{background:var(--blue);}
   @media (max-width:860px){ nav ul{display:none;} }
 
+  .lang-switch{
+    display:flex; align-items:center; gap:2px;
+    border:1px solid var(--line); padding:3px;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .lang-btn{
+    background:none; border:none; padding:5px 10px;
+    font-size:12px; font-weight:600; letter-spacing:0.03em;
+    color:var(--grey-text-light);
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn.active{ background:var(--charcoal); color:var(--white); }
+  .lang-btn:not(.active):hover{ color:var(--charcoal); }
+
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
@@ -380,19 +394,25 @@
     <div class="logo"><span class="logo-mark"></span>ZAVISCAD</div>
     <nav>
       <ul>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#kontakt" data-i18n="nav_contact">Kontakt</a></li>
       </ul>
     </nav>
-    <a href="#kontakt" class="nav-cta">Vyplniť dopyt</a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn active" data-lang="sk" onclick="setLang('sk')">SK</button>
+        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#kontakt" class="nav-cta" data-i18n="nav_cta">Vyplniť dopyt</a>
+    </div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-eyebrow">3D TLAČ · CAD MODELOVANIE</div>
-  <h1 class="hero-title">ZAVISCAD: OD NÁPADU<br>K <span class="accent">HOTOVÉMU DIELU</span></h1>
-  <p class="hero-sub">Profesionálna 3D tlač, presné CAD modelovanie a technické riešenia pre každého.</p>
+  <div class="hero-eyebrow" data-i18n="hero_eyebrow">3D TLAČ · CAD MODELOVANIE</div>
+  <h1 class="hero-title"><span data-i18n="hero_l1">ZAVISCAD: OD NÁPADU</span><br><span data-i18n="hero_l2_pre">K </span><span class="accent" data-i18n="hero_l2_accent">HOTOVÉMU DIELU</span></h1>
+  <p class="hero-sub" data-i18n="hero_sub">Profesionálna 3D tlač, presné CAD modelovanie a technické riešenia pre každého.</p>
 
-  <a href="#kontakt" class="hero-cta">Získať cenovú ponuku →</a>
+  <a href="#kontakt" class="hero-cta" data-i18n="hero_cta">Získať cenovú ponuku →</a>
 </section>
 
 <section class="segments">
@@ -403,7 +423,7 @@
     <div class="illust-row">
       <!-- photo-style: broken component -->
       <div class="illust-card photo">
-        <span class="illust-label">PRED</span>
+        <span class="illust-label" data-i18n="illust_a_photo_label">PRED</span>
         <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="metalA" x1="0" y1="0" x2="1" y2="1">
@@ -434,7 +454,7 @@
 
       <!-- CAD viewport style: 3D replacement design -->
       <div class="illust-card cad">
-        <span class="illust-label">3D NÁVRH</span>
+        <span class="illust-label" data-i18n="illust_a_cad_label">3D NÁVRH</span>
         <div class="cad-chrome"><span></span><span></span><span></span></div>
         <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
           <line x1="0" y1="90" x2="160" y2="90" stroke="#2a3040" stroke-width="1"/>
@@ -450,19 +470,19 @@
       </div>
     </div>
 
-    <div class="panel-tag"><span class="dash"></span>PRE JEDNOTLIVCOV</div>
-    <h2>Keď sa niečo zlomí, my to vyriešime.</h2>
+    <div class="panel-tag"><span class="dash"></span><span data-i18n="panelA_tag">PRE JEDNOTLIVCOV</span></div>
+    <h2 data-i18n="panelA_heading">Keď sa niečo zlomí, my to vyriešime.</h2>
 
     <div class="panel-block">
-      <span class="panel-block-label">Problém</span>
-      <p>Zlomil sa vám dôležitý komponent? Stratili ste súčiastku k spotrebiču? Máte nápad na vlastný produkt, ale neviete ho navrhnúť?</p>
+      <span class="panel-block-label" data-i18n="panelA_problem_label">Problém</span>
+      <p data-i18n="panelA_problem">Zlomil sa vám dôležitý komponent? Stratili ste súčiastku k spotrebiču? Máte nápad na vlastný produkt, ale neviete ho navrhnúť?</p>
     </div>
     <div class="panel-block">
-      <span class="panel-block-label">Riešenie</span>
-      <p>Prekreslíme váš zlomený diel a vytlačíme plne funkčný náhradný kus. Pomôžeme zhmotniť vaše nápady do reality.</p>
+      <span class="panel-block-label" data-i18n="panelA_solution_label">Riešenie</span>
+      <p data-i18n="panelA_solution">Prekreslíme váš zlomený diel a vytlačíme plne funkčný náhradný kus. Pomôžeme zhmotniť vaše nápady do reality.</p>
     </div>
 
-    <a href="#kontakt" class="panel-cta" onclick="presetService('Prekreslenie zlomeného dielu podľa fotky')">POŽIADAŤ O PREKRESLENIE/TLAČ <span class="arrow">→</span></a>
+    <a href="#kontakt" class="panel-cta" onclick="presetService('reprint')"><span data-i18n="panelA_cta">POŽIADAŤ O PREKRESLENIE/TLAČ</span> <span class="arrow">→</span></a>
   </div>
 
   <!-- PANEL B: FIRMY -->
@@ -471,7 +491,7 @@
     <div class="illust-row">
       <!-- photo-style: PDF document on desk -->
       <div class="illust-card photo">
-        <span class="illust-label">2D PDF</span>
+        <span class="illust-label" data-i18n="illust_b_photo_label">2D PDF</span>
         <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
           <rect width="160" height="120" fill="#c7cdd8"/>
           <!-- paper sheet -->
@@ -495,7 +515,7 @@
 
       <!-- CAD viewport style: clean technical drawing -->
       <div class="illust-card cad">
-        <span class="illust-label">3D CAD VÝKRES</span>
+        <span class="illust-label" data-i18n="illust_b_cad_label">3D CAD VÝKRES</span>
         <div class="cad-chrome"><span></span><span></span><span></span></div>
         <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
           <line x1="0" y1="92" x2="160" y2="92" stroke="#2a3040" stroke-width="1"/>
@@ -514,27 +534,27 @@
       </div>
     </div>
 
-    <div class="panel-tag"><span class="dash"></span>PRE FIRMY</div>
-    <h2>Inžinierska presnosť pre vašu výrobu.</h2>
+    <div class="panel-tag"><span class="dash"></span><span data-i18n="panelB_tag">PRE FIRMY</span></div>
+    <h2 data-i18n="panelB_heading">Inžinierska presnosť pre vašu výrobu.</h2>
 
     <div class="panel-block">
-      <span class="panel-block-label">Problém</span>
-      <p>Potrebujete navrhnúť vlastné 3D prípravky pre výrobu? Máte len starú 2D dokumentáciu v PDF a potrebujete presné 3D modely? Nestíha vaša konštrukcia?</p>
+      <span class="panel-block-label" data-i18n="panelA_problem_label">Problém</span>
+      <p data-i18n="panelB_problem">Potrebujete navrhnúť vlastné 3D prípravky pre výrobu? Máte len starú 2D dokumentáciu v PDF a potrebujete presné 3D modely? Nestíha vaša konštrukcia?</p>
     </div>
     <div class="panel-block">
-      <span class="panel-block-label">Riešenie</span>
-      <p>Zabezpečíme kompletný návrh inžinierskych prípravkov. Prerobíme vašu 2D dokumentáciu (aj PDF) na presné a čisté 3D CAD modely.</p>
+      <span class="panel-block-label" data-i18n="panelA_solution_label">Riešenie</span>
+      <p data-i18n="panelB_solution">Zabezpečíme kompletný návrh inžinierskych prípravkov. Prerobíme vašu 2D dokumentáciu (aj PDF) na presné a čisté 3D CAD modely.</p>
     </div>
 
-    <a href="#kontakt" class="panel-cta" onclick="presetService('Návrh inžinierskych prípravkov / prevod PDF na 3D CAD')">DOHODNÚŤ ODBORNÚ KONZULTÁCIU <span class="arrow">→</span></a>
+    <a href="#kontakt" class="panel-cta" onclick="presetService('engineering')"><span data-i18n="panelB_cta">DOHODNÚŤ ODBORNÚ KONZULTÁCIU</span> <span class="arrow">→</span></a>
   </div>
 </section>
 
 <section class="contact" id="kontakt">
   <div class="contact-head">
-    <div class="panel-tag" style="color:var(--blue);"><span class="dash"></span>NEZÁVÄZNÝ DOPYT<span class="dash"></span></div>
-    <h2 class="display">Získajte cenovú ponuku</h2>
-    <p>Nahrajte fotku zlomeného dielu, PDF dokumentáciu alebo popíšte váš projekt — ozveme sa vám do 24 hodín.</p>
+    <div class="panel-tag" style="color:var(--blue);"><span class="dash"></span><span data-i18n="contact_tag">NEZÁVÄZNÝ DOPYT</span><span class="dash"></span></div>
+    <h2 class="display" data-i18n="contact_heading">Získajte cenovú ponuku</h2>
+    <p data-i18n="contact_sub">Nahrajte fotku zlomeného dielu, PDF dokumentáciu alebo popíšte váš projekt — ozveme sa vám do 24 hodín.</p>
   </div>
 
   <div class="contact-card">
@@ -550,38 +570,38 @@
       <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
 
       <div class="form-group">
-        <label for="name">Meno a priezvisko</label>
-        <input type="text" id="name" name="name" required placeholder="Ján Novák">
+        <label for="name" data-i18n="label_name">Meno a priezvisko</label>
+        <input type="text" id="name" name="name" required placeholder="Ján Novák" data-i18n-placeholder="placeholder_name">
       </div>
       <div class="form-group">
-        <label for="email">Váš e-mail</label>
-        <input type="email" id="email" name="email" required placeholder="jan@example.sk">
+        <label for="email" data-i18n="label_email">Váš e-mail</label>
+        <input type="email" id="email" name="email" required placeholder="jan@example.sk" data-i18n-placeholder="placeholder_email">
       </div>
       <div class="form-group">
-        <label for="material">Požadovaná služba</label>
+        <label for="material" data-i18n="label_service">Požadovaná služba</label>
         <select id="material" name="service">
-          <option>3D Tlač — PLA (štandard)</option>
-          <option>3D Tlač — PETG (odolný)</option>
-          <option>3D Tlač — ABS/ASA (technický)</option>
-          <option>Prekreslenie zlomeného dielu podľa fotky</option>
-          <option>Návrh inžinierskych prípravkov / prevod PDF na 3D CAD</option>
+          <option value="pla" data-i18n="opt_pla">3D Tlač — PLA (štandard)</option>
+          <option value="petg" data-i18n="opt_petg">3D Tlač — PETG (odolný)</option>
+          <option value="abs" data-i18n="opt_abs">3D Tlač — ABS/ASA (technický)</option>
+          <option value="reprint" data-i18n="opt_reprint">Prekreslenie zlomeného dielu podľa fotky</option>
+          <option value="engineering" data-i18n="opt_engineering">Návrh inžinierskych prípravkov / prevod PDF na 3D CAD</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="message">Popis projektu alebo rozmery</label>
-        <textarea id="message" name="message" rows="4" placeholder="Opíšte, čo potrebujete vyrobiť alebo navrhnúť..."></textarea>
+        <label for="message" data-i18n="label_message">Popis projektu alebo rozmery</label>
+        <textarea id="message" name="message" rows="4" placeholder="Opíšte, čo potrebujete vyrobiť alebo navrhnúť..." data-i18n-placeholder="placeholder_message"></textarea>
       </div>
-      <button type="submit" class="contact-submit">Odoslať nezáväzný dopyt</button>
+      <button type="submit" class="contact-submit" data-i18n="submit_btn">Odoslať nezáväzný dopyt</button>
       <div class="form-error mono" id="formError" style="display:none; color:#e5484d; font-size:12px; margin-top:12px; text-align:center;"></div>
     </form>
 
     <div class="form-success" id="formSuccess">
       <div class="check">✓</div>
-      <h3>Ďakujeme za dopyt!</h3>
-      <p>Správa bola úspešne odoslaná. Ozveme sa vám čo najskôr na uvedený e-mail.</p>
+      <h3 data-i18n="success_title">Ďakujeme za dopyt!</h3>
+      <p data-i18n="success_text">Správa bola úspešne odoslaná. Ozveme sa vám čo najskôr na uvedený e-mail.</p>
     </div>
 
-    <div class="form-note mono">ODPOVEĎ ZVYČAJNE DO 24H</div>
+    <div class="form-note mono" data-i18n="form_note">ODPOVEĎ ZVYČAJNE DO 24H</div>
   </div>
 </section>
 
@@ -589,16 +609,140 @@
   <div class="footer-inner">
     <div class="logo"><span class="logo-mark"></span>ZAVISCAD</div>
     <div class="footer-links">
-      <a href="#kontakt">Kontakt</a>
+      <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 ZavisCAD — 3D tlač &amp; CAD modelovanie</span>
-    <span>PRESNOSŤ · RÝCHLOSŤ · SPOĽAHLIVOSŤ</span>
+    <span data-i18n="footer_copy">© 2026 ZavisCAD — 3D tlač &amp; CAD modelovanie</span>
+    <span data-i18n="footer_tagline">PRESNOSŤ · RÝCHLOSŤ · SPOĽAHLIVOSŤ</span>
   </div>
 </footer>
 
   <script>
+    var translations = {
+      sk: {
+        page_title: "ZavisCAD — Od nápadu k hotovému dielu",
+        nav_contact: "Kontakt",
+        nav_cta: "Vyplniť dopyt",
+        hero_eyebrow: "3D TLAČ · CAD MODELOVANIE",
+        hero_l1: "ZAVISCAD: OD NÁPADU",
+        hero_l2_pre: "K ",
+        hero_l2_accent: "HOTOVÉMU DIELU",
+        hero_sub: "Profesionálna 3D tlač, presné CAD modelovanie a technické riešenia pre každého.",
+        hero_cta: "Získať cenovú ponuku →",
+        illust_a_photo_label: "PRED",
+        illust_a_cad_label: "3D NÁVRH",
+        panelA_tag: "PRE JEDNOTLIVCOV",
+        panelA_heading: "Keď sa niečo zlomí, my to vyriešime.",
+        panelA_problem_label: "Problém",
+        panelA_problem: "Zlomil sa vám dôležitý komponent? Stratili ste súčiastku k spotrebiču? Máte nápad na vlastný produkt, ale neviete ho navrhnúť?",
+        panelA_solution_label: "Riešenie",
+        panelA_solution: "Prekreslíme váš zlomený diel a vytlačíme plne funkčný náhradný kus. Pomôžeme zhmotniť vaše nápady do reality.",
+        panelA_cta: "POŽIADAŤ O PREKRESLENIE/TLAČ",
+        illust_b_photo_label: "2D PDF",
+        illust_b_cad_label: "3D CAD VÝKRES",
+        panelB_tag: "PRE FIRMY",
+        panelB_heading: "Inžinierska presnosť pre vašu výrobu.",
+        panelB_problem: "Potrebujete navrhnúť vlastné 3D prípravky pre výrobu? Máte len starú 2D dokumentáciu v PDF a potrebujete presné 3D modely? Nestíha vaša konštrukcia?",
+        panelB_solution: "Zabezpečíme kompletný návrh inžinierskych prípravkov. Prerobíme vašu 2D dokumentáciu (aj PDF) na presné a čisté 3D CAD modely.",
+        panelB_cta: "DOHODNÚŤ ODBORNÚ KONZULTÁCIU",
+        contact_tag: "NEZÁVÄZNÝ DOPYT",
+        contact_heading: "Získajte cenovú ponuku",
+        contact_sub: "Nahrajte fotku zlomeného dielu, PDF dokumentáciu alebo popíšte váš projekt — ozveme sa vám do 24 hodín.",
+        label_name: "Meno a priezvisko",
+        placeholder_name: "Ján Novák",
+        label_email: "Váš e-mail",
+        placeholder_email: "jan@example.sk",
+        label_service: "Požadovaná služba",
+        opt_pla: "3D Tlač — PLA (štandard)",
+        opt_petg: "3D Tlač — PETG (odolný)",
+        opt_abs: "3D Tlač — ABS/ASA (technický)",
+        opt_reprint: "Prekreslenie zlomeného dielu podľa fotky",
+        opt_engineering: "Návrh inžinierskych prípravkov / prevod PDF na 3D CAD",
+        label_message: "Popis projektu alebo rozmery",
+        placeholder_message: "Opíšte, čo potrebujete vyrobiť alebo navrhnúť...",
+        submit_btn: "Odoslať nezáväzný dopyt",
+        submit_sending: "Odosielam...",
+        success_title: "Ďakujeme za dopyt!",
+        success_text: "Správa bola úspešne odoslaná. Ozveme sa vám čo najskôr na uvedený e-mail.",
+        form_note: "ODPOVEĎ ZVYČAJNE DO 24H",
+        form_error: "Ospravedlňujeme sa, dopyt sa nepodarilo odoslať. Skúste to prosím znova alebo napíšte priamo na brainzavis@gmail.com.",
+        footer_copy: "© 2026 ZavisCAD — 3D tlač & CAD modelovanie",
+        footer_tagline: "PRESNOSŤ · RÝCHLOSŤ · SPOĽAHLIVOSŤ"
+      },
+      en: {
+        page_title: "ZavisCAD — From Idea to Finished Part",
+        nav_contact: "Contact",
+        nav_cta: "Send inquiry",
+        hero_eyebrow: "3D PRINTING · CAD MODELING",
+        hero_l1: "ZAVISCAD: FROM IDEA",
+        hero_l2_pre: "TO A ",
+        hero_l2_accent: "FINISHED PART",
+        hero_sub: "Professional 3D printing, precise CAD modeling, and technical solutions for everyone.",
+        hero_cta: "Get a quote →",
+        illust_a_photo_label: "BEFORE",
+        illust_a_cad_label: "3D DESIGN",
+        panelA_tag: "FOR INDIVIDUALS",
+        panelA_heading: "When something breaks, we fix it.",
+        panelA_problem_label: "Problem",
+        panelA_problem: "Did an important component break? Lost a part for an appliance? Have an idea for your own product but don't know how to design it?",
+        panelA_solution_label: "Solution",
+        panelA_solution: "We'll redesign your broken part and 3D print a fully functional replacement. We help turn your ideas into reality.",
+        panelA_cta: "REQUEST REDESIGN / PRINT",
+        illust_b_photo_label: "2D PDF",
+        illust_b_cad_label: "3D CAD DRAWING",
+        panelB_tag: "FOR BUSINESSES",
+        panelB_heading: "Engineering precision for your production.",
+        panelB_problem: "Need to design custom 3D fixtures for production? Only have old 2D PDF documentation and need precise 3D models? Is your design team falling behind?",
+        panelB_solution: "We provide complete engineering fixture design. We convert your 2D documentation (including PDF) into precise, clean 3D CAD models.",
+        panelB_cta: "SCHEDULE A CONSULTATION",
+        contact_tag: "NO-OBLIGATION INQUIRY",
+        contact_heading: "Get a quote",
+        contact_sub: "Send a photo of the broken part, PDF documentation, or describe your project — we'll get back to you within 24 hours.",
+        label_name: "Full name",
+        placeholder_name: "John Smith",
+        label_email: "Your email",
+        placeholder_email: "john@example.com",
+        label_service: "Requested service",
+        opt_pla: "3D Printing — PLA (standard)",
+        opt_petg: "3D Printing — PETG (durable)",
+        opt_abs: "3D Printing — ABS/ASA (technical)",
+        opt_reprint: "Redesign of a broken part from a photo",
+        opt_engineering: "Engineering fixture design / PDF to 3D CAD conversion",
+        label_message: "Project description or dimensions",
+        placeholder_message: "Describe what you need made or designed...",
+        submit_btn: "Send inquiry",
+        submit_sending: "Sending...",
+        success_title: "Thank you for your inquiry!",
+        success_text: "Your message was sent successfully. We'll get back to you as soon as possible at the email provided.",
+        form_note: "RESPONSE USUALLY WITHIN 24H",
+        form_error: "Sorry, we couldn't send your inquiry. Please try again or email us directly at brainzavis@gmail.com.",
+        footer_copy: "© 2026 ZavisCAD — 3D printing & CAD modeling",
+        footer_tagline: "PRECISION · SPEED · RELIABILITY"
+      }
+    };
+
+    var currentLang = 'sk';
+
+    function setLang(lang){
+      if(!translations[lang]) return;
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.title = translations[lang].page_title;
+
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var key = el.getAttribute('data-i18n');
+        if(translations[lang][key] !== undefined){ el.textContent = translations[lang][key]; }
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+        var key = el.getAttribute('data-i18n-placeholder');
+        if(translations[lang][key] !== undefined){ el.placeholder = translations[lang][key]; }
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(btn){
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
     function presetService(value){
       var select = document.getElementById('material');
       var exists = Array.from(select.options).some(function(o){ return o.value === value; });
@@ -618,7 +762,7 @@
 
       var originalLabel = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Odosielam...';
+      submitBtn.textContent = translations[currentLang].submit_sending;
 
       var formData = new FormData(form);
 
@@ -633,11 +777,11 @@
           form.style.display = 'none';
           document.getElementById('formSuccess').classList.add('show');
         } else {
-          throw new Error(data.message || 'Odoslanie zlyhalo');
+          throw new Error(data.message || 'failed');
         }
       })
       .catch(function(err){
-        errorBox.textContent = 'Ospravedlňujeme sa, dopyt sa nepodarilo odoslať. Skúste to prosím znova alebo napíšte priamo na brainzavis@gmail.com.';
+        errorBox.textContent = translations[currentLang].form_error;
         errorBox.style.display = 'block';
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
