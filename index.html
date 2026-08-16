@@ -52,18 +52,15 @@
   }
   .logo{
     display:flex; align-items:center; gap:10px;
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700; font-size:19px; letter-spacing:-0.01em;
   }
-  .logo-mark{
-    width:26px; height:26px; position:relative;
-    border:1.5px solid var(--charcoal);
+  .brand-logo{ height:34px; width:auto; display:block; }
+  .brand-logo-footer{ height:38px; }
+  .panel-brand-mark{
+    position:absolute; top:28px; right:28px;
+    width:120px; height:120px;
+    opacity:0.10;
+    pointer-events:none;
   }
-  .logo-mark::before, .logo-mark::after{
-    content:''; position:absolute; background:var(--blue);
-  }
-  .logo-mark::before{ width:100%; height:1.5px; top:50%; left:0; transform:translateY(-50%);}
-  .logo-mark::after{ width:1.5px; height:100%; left:50%; top:0; transform:translateX(-50%);}
   nav ul{list-style:none; display:flex; gap:36px;}
   nav a{
     font-size:14px; font-weight:500; color:var(--charcoal-2);
@@ -376,7 +373,6 @@
     border-bottom:1px solid var(--line-dark); padding-bottom:32px; margin-bottom:20px;
   }
   footer .logo{color:var(--white);}
-  footer .logo-mark{border-color:var(--white);}
   .footer-links{display:flex; gap:32px; flex-wrap:wrap;}
   .footer-links a{font-size:13.5px; color:var(--grey-text-light);}
   .footer-links a:hover{color:var(--white);}
@@ -391,7 +387,16 @@
 
 <header>
   <div class="nav-inner">
-    <div class="logo"><span class="logo-mark"></span>ZAVISCAD</div>
+    <div class="logo">
+      <svg class="brand-logo" viewBox="10 15 350 105" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZavisCAD">
+        <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+        <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+        <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+        <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="135" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#0F172A">Zavis</text>
+        <text x="245" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#0284C7">CAD</text>
+      </svg>
+    </div>
     <nav>
       <ul>
         <li><a href="#kontakt" data-i18n="nav_contact">Kontakt</a></li>
@@ -488,6 +493,12 @@
   <!-- PANEL B: FIRMY -->
   <div class="panel panel-b">
     <div class="panel-grid-overlay"></div>
+    <svg class="panel-brand-mark" viewBox="20 20 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+      <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+      <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+      <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
     <div class="illust-row">
       <!-- photo-style: PDF document on desk -->
       <div class="illust-card photo">
@@ -607,7 +618,16 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="logo"><span class="logo-mark"></span>ZAVISCAD</div>
+    <div class="logo">
+      <svg class="brand-logo brand-logo-footer" viewBox="10 15 350 105" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZavisCAD">
+        <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+        <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+        <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+        <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="135" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#FFFFFF">Zavis</text>
+        <text x="245" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#38BDF8">CAD</text>
+      </svg>
+    </div>
     <div class="footer-links">
       <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
     </div>
