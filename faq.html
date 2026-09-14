@@ -48,6 +48,20 @@
   .nav-cta:hover{background:var(--blue);}
   @media (max-width:860px){ nav ul{display:none;} }
 
+  .lang-switch{
+    display:flex; align-items:center; gap:2px;
+    border:1px solid var(--line); padding:3px;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .lang-btn{
+    background:none; border:none; padding:5px 10px;
+    font-size:12px; font-weight:600; letter-spacing:0.03em;
+    color:var(--grey-text-light);
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn.active{ background:var(--charcoal); color:var(--white); }
+  .lang-btn:not(.active):hover{ color:var(--charcoal); }
+
   .page-head{
     padding:90px 40px 60px;
     max-width:720px; margin:0 auto; text-align:center;
@@ -168,19 +182,25 @@
     </a>
     <nav>
       <ul>
-        <li><a href="o-mne.html">O mne</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="o-mne.html" data-i18n="nav_about">O mne</a></li>
+        <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
+        <li><a href="index.html#kontakt" data-i18n="nav_contact">Kontakt</a></li>
       </ul>
     </nav>
-    <a href="index.html#kontakt" class="nav-cta">Vyplniť dopyt</a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn active" data-lang="sk" onclick="setLang('sk')">SK</button>
+        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#kontakt" class="nav-cta" data-i18n="nav_cta">Vyplniť dopyt</a>
+    </div>
   </div>
 </header>
 
 <div class="page-head">
-  <div class="eyebrow">FAQ</div>
-  <h1>Často kladené otázky</h1>
-  <p>Všetko, čo potrebuješ vedieť o technológii, materiáloch, cene a spolupráci s nami.</p>
+  <div class="eyebrow" data-i18n="faq_eyebrow">FAQ</div>
+  <h1 data-i18n="faq_h1">Často kladené otázky</h1>
+  <p data-i18n="faq_sub">Všetko, čo potrebuješ vedieť o technológii, materiáloch, cene a spolupráci s nami.</p>
 </div>
 
 <div class="faq-wrap">
@@ -189,53 +209,53 @@
   <div class="faq-group">
     <div class="faq-group-title">
       <span class="faq-group-num mono">01</span>
-      <h2>Služby a spolupráca</h2>
+      <h2 data-i18n="grp1_title">Služby a spolupráca</h2>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Aké služby ZavisCAD poskytuje?</span>
+        <span class="q-text" data-i18n="q1">Aké služby ZavisCAD poskytuje?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Špecializujeme sa na zákazkovú 3D tlač funkčných náhradných dielov, malosériovú výrobu pre priemysel aj B2C sektor, 3D CAD návrhy a inžiniersku podporu pri vývoji produktov (R&amp;D).</p>
+          <p data-i18n="a1">Špecializujeme sa na zákazkovú 3D tlač funkčných náhradných dielov, malosériovú výrobu pre priemysel aj B2C sektor, 3D CAD návrhy a inžiniersku podporu pri vývoji produktov (R&amp;D).</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Viem u vás objednať 3D tlač, aj keď nemám 3D model?</span>
+        <span class="q-text" data-i18n="q2">Viem u vás objednať 3D tlač, aj keď nemám 3D model?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Áno. Poskytujeme plnohodnotné CAD dizajnovanie a reverzné inžinierstvo. Stačí nám poslať poškodený originálny diel, nákres, alebo fyzický kus namerať. Vytvoríme 3D CAD model a následne z neho vyrobíme funkčnú náhradu.</p>
+          <p data-i18n="a2">Áno. Poskytujeme plnohodnotné CAD dizajnovanie a reverzné inžinierstvo. Stačí nám poslať poškodený originálny diel, nákres, alebo fyzický kus namerať. Vytvoríme 3D CAD model a následne z neho vyrobíme funkčnú náhradu.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Poskytujete aj podporu pri vývoji produktov (R&amp;D) a riadení projektov?</span>
+        <span class="q-text" data-i18n="q3">Poskytujete aj podporu pri vývoji produktov (R&amp;D) a riadení projektov?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Áno. Vďaka zázemiu v projektovom manažmente a R&amp;D vývoji vieme klientom pomôcť s konzultáciami konceptov, optimalizáciou dizajnu pre výrobu (DFM), prototypovaním a koordináciou technických projektov.</p>
+          <p data-i18n="a3">Áno. Vďaka zázemiu v projektovom manažmente a R&amp;D vývoji vieme klientom pomôcť s konzultáciami konceptov, optimalizáciou dizajnu pre výrobu (DFM), prototypovaním a koordináciou technických projektov.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Pripravujete podklady a komunikujete aj v cudzom jazyku?</span>
+        <span class="q-text" data-i18n="q4">Pripravujete podklady a komunikujete aj v cudzom jazyku?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Áno, celá projektová komunikácia aj podklady (technická špecifikácia, výkresy, dokumentácia) môžu byť pripravené v anglickom jazyku, ak si to váš projekt vyžaduje.</p>
+          <p data-i18n="a4">Áno, celá projektová komunikácia aj podklady (technická špecifikácia, výkresy, dokumentácia) môžu byť pripravené v anglickom jazyku, ak si to váš projekt vyžaduje.</p>
         </div>
       </div>
     </div>
@@ -245,45 +265,45 @@
   <div class="faq-group">
     <div class="faq-group-title">
       <span class="faq-group-num mono">02</span>
-      <h2>Technológia a materiály</h2>
+      <h2 data-i18n="grp2_title">Technológia a materiály</h2>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Na akej technológii a zariadeniach tlačíte?</span>
+        <span class="q-text" data-i18n="q5">Na akej technológii a zariadeniach tlačíte?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Používame FDM/FFF technológiu na priemyselnej tlačiarni <strong>Bambu Lab P2S Combo</strong>. Táto platforma nám umožňuje tlačiť s vysokou rozmerovou presnosťou pri vysokých rýchlostiach a pracovať s odskúšanými technickými materiálmi v riadenej uzavretej komore.</p>
+          <p data-i18n="a5">Používame FDM/FFF technológiu na priemyselnej tlačiarni <strong>Bambu Lab P2S Combo</strong>. Táto platforma nám umožňuje tlačiť s vysokou rozmerovou presnosťou pri vysokých rýchlostiach a pracovať s odskúšanými technickými materiálmi v riadenej uzavretej komore.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Aký je maximálny rozmer tlačenej súčiastky?</span>
+        <span class="q-text" data-i18n="q6">Aký je maximálny rozmer tlačenej súčiastky?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Maximálny objem tlače na jeden kus je <strong>256 × 256 × 256 mm</strong>. Väčšie komponenty alebo členité vzduchotechnické prechody vieme po dohovore rozdeliť na viacero častí so špeciálnymi spojmi a pevnostne zoskrutkovať či zvariť.</p>
+          <p data-i18n="a6">Maximálny objem tlače na jeden kus je <strong>256 × 256 × 256 mm</strong>. Väčšie komponenty alebo členité vzduchotechnické prechody vieme po dohovore rozdeliť na viacero častí so špeciálnymi spojmi a pevnostne zoskrutkovať či zvariť.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Z akých materiálov vyrábate a ako si vybrať ten správny?</span>
+        <span class="q-text" data-i18n="q7">Z akých materiálov vyrábate a ako si vybrať ten správny?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Materiál vyberáme vždy podľa účelu použitia súčiastky:</p>
+          <p data-i18n="a7_intro">Materiál vyberáme vždy podľa účelu použitia súčiastky:</p>
           <ul>
-            <li><strong>PETG</strong> — húževnatý a pružný plast odolný voči vode, chémii a teplotám do 80 °C. Ideálny na funkčné kryty, vzduchotechnické diely a podlahové inštalácie.</li>
-            <li><strong>ASA</strong> — špičkový technický plast s vysokou UV stabilitou a odolnosťou voči poveternostným vplyvom a teplotám do 100 °C. Vhodný pre exteriér a komponenty vystavené slnku.</li>
-            <li><strong>PLA</strong> — používame primárne na rýchle rozmerové overenie návrhu (prototypové vzorky) pred finálnou tlačou z technického plastu.</li>
+            <li data-i18n="a7_li1"><strong>PETG</strong> — húževnatý a pružný plast odolný voči vode, chémii a teplotám do 80 °C. Ideálny na funkčné kryty, vzduchotechnické diely a podlahové inštalácie.</li>
+            <li data-i18n="a7_li2"><strong>ASA</strong> — špičkový technický plast s vysokou UV stabilitou a odolnosťou voči poveternostným vplyvom a teplotám do 100 °C. Vhodný pre exteriér a komponenty vystavené slnku.</li>
+            <li data-i18n="a7_li3"><strong>PLA</strong> — používame primárne na rýchle rozmerové overenie návrhu (prototypové vzorky) pred finálnou tlačou z technického plastu.</li>
           </ul>
         </div>
       </div>
@@ -291,24 +311,24 @@
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Sú 3D tlačené diely dostatočne pevné?</span>
+        <span class="q-text" data-i18n="q8">Sú 3D tlačené diely dostatočne pevné?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Áno. Pevnosť dielu závisí od orientácie vrstiev pri tlači a správneho CAD návrhu. Pri výrobe nastavujeme optimalizované hustoty výplne, vyšší počet obvodových stien (perimetrov) a v prípade potreby pridávame do geometrie vnútorné výstuhy či stĺpiky.</p>
+          <p data-i18n="a8">Áno. Pevnosť dielu závisí od orientácie vrstiev pri tlači a správneho CAD návrhu. Pri výrobe nastavujeme optimalizované hustoty výplne, vyšší počet obvodových stien (perimetrov) a v prípade potreby pridávame do geometrie vnútorné výstuhy či stĺpiky.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Sú vaše diely z PETG vhodné do vzduchotechniky a vlhkého prostredia?</span>
+        <span class="q-text" data-i18n="q9">Sú vaše diely z PETG vhodné do vzduchotechniky a vlhkého prostredia?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Áno. PETG nenasakuje vodu, nekrehne a výborne odoláva prúdeniu vzduchu aj teplotám v rekuperačných či ventilačných systémoch. Vďaka nastaveniu plnostenných obvodov dodávame diely, ktoré sú 100 % vzduchotesné.</p>
+          <p data-i18n="a9">Áno. PETG nenasakuje vodu, nekrehne a výborne odoláva prúdeniu vzduchu aj teplotám v rekuperačných či ventilačných systémoch. Vďaka nastaveniu plnostenných obvodov dodávame diely, ktoré sú 100 % vzduchotesné.</p>
         </div>
       </div>
     </div>
@@ -318,69 +338,69 @@
   <div class="faq-group">
     <div class="faq-group-title">
       <span class="faq-group-num mono">03</span>
-      <h2>Kvalita, cena a dodanie</h2>
+      <h2 data-i18n="grp3_title">Kvalita, cena a dodanie</h2>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Ako kontrolujete presnosť a kvalitu dielov?</span>
+        <span class="q-text" data-i18n="q10">Ako kontrolujete presnosť a kvalitu dielov?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Pred odovzdaním zákazky vykonávame dôslednú kontrolu základných rozmerov (šírka, výška, hĺbka) pomocou posuvného meradla, aby sme mali istotu, že výtlačok rozmerovo plne zodpovedá požadovanému CAD modelu.</p>
+          <p data-i18n="a10">Pred odovzdaním zákazky vykonávame dôslednú kontrolu základných rozmerov (šírka, výška, hĺbka) pomocou posuvného meradla, aby sme mali istotu, že výtlačok rozmerovo plne zodpovedá požadovanému CAD modelu.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Aká je cena zákazkovej 3D tlače a ako ju kalkulujete?</span>
+        <span class="q-text" data-i18n="q11">Aká je cena zákazkovej 3D tlače a ako ju kalkulujete?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Cena sa odvíja od troch hlavných zložiek:</p>
+          <p data-i18n="a11_intro">Cena sa odvíja od troch hlavných zložiek:</p>
           <ul>
-            <li>Spotreba materiálu (gramáž a typ plastu PETG/ASA/PLA)</li>
-            <li>Strojový čas (čistá doba tlače na tlačiarni)</li>
-            <li>CAD modelovanie / inžinierska príprava (ak nedodáte hotový 3D model v STL/STEP formáte)</li>
+            <li data-i18n="a11_li1">Spotreba materiálu (gramáž a typ plastu PETG/ASA/PLA)</li>
+            <li data-i18n="a11_li2">Strojový čas (čistá doba tlače na tlačiarni)</li>
+            <li data-i18n="a11_li3">CAD modelovanie / inžinierska príprava (ak nedodáte hotový 3D model v STL/STEP formáte)</li>
           </ul>
-          <p>Presnú cenovú ponuku vám vypracujeme nezáväzne po zaslaní dopytu.</p>
+          <p data-i18n="a11_outro">Presnú cenovú ponuku vám vypracujeme nezáväzne po zaslaní dopytu.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">Aká je dodacia lehota?</span>
+        <span class="q-text" data-i18n="q12">Aká je dodacia lehota?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Termín dodania a dĺžka výroby sú vždy individuálne a po vzájomnej dohode. Závisia od aktuálnej vyťaženosti kapacít, náročnosti CAD návrhu a veľkosti tlačeného kusu.</p>
+          <p data-i18n="a12">Termín dodania a dĺžka výroby sú vždy individuálne a po vzájomnej dohode. Závisia od aktuálnej vyťaženosti kapacít, náročnosti CAD návrhu a veľkosti tlačeného kusu.</p>
         </div>
       </div>
     </div>
 
     <div class="faq-item">
       <button class="faq-question">
-        <span class="q-text">V akých formátoch môžem poslať podklady pre tlač?</span>
+        <span class="q-text" data-i18n="q13">V akých formátoch môžem poslať podklady pre tlač?</span>
         <span class="faq-icon"></span>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
-          <p>Najlepšie pre zachovanie presnosti sú CAD formáty <strong>STEP</strong> (.step / .stp) alebo <strong>IGES</strong> (.igs). Ak máte iba hotový sieťový model, akceptujeme aj <strong>STL</strong> (.stl) alebo <strong>3MF</strong> (.3mf).</p>
+          <p data-i18n="a13">Najlepšie pre zachovanie presnosti sú CAD formáty <strong>STEP</strong> (.step / .stp) alebo <strong>IGES</strong> (.igs). Ak máte iba hotový sieťový model, akceptujeme aj <strong>STL</strong> (.stl) alebo <strong>3MF</strong> (.3mf).</p>
         </div>
       </div>
     </div>
   </div>
 
   <div class="faq-cta">
-    <p>Nenašiel si odpoveď, ktorú si hľadal?
+    <p data-i18n="faqcta_text">Nenašiel si odpoveď, ktorú si hľadal?
       <span>Napíš nám priamo — odpovieme zvyčajne do 24 hodín.</span>
     </p>
-    <a href="index.html#kontakt">Kontaktovať nás →</a>
+    <a href="index.html#kontakt" data-i18n="faqcta_btn">Kontaktovať nás →</a>
   </div>
 
 </div>
@@ -429,6 +449,127 @@
       }
     });
   });
+
+  var translations = {
+    sk: {
+      page_title: "Časté otázky — ZavisCAD",
+      nav_about: "O mne",
+      nav_faq: "FAQ",
+      nav_contact: "Kontakt",
+      nav_cta: "Vyplniť dopyt",
+      faq_eyebrow: "FAQ",
+      faq_h1: "Často kladené otázky",
+      faq_sub: "Všetko, čo potrebuješ vedieť o technológii, materiáloch, cene a spolupráci s nami.",
+      grp1_title: "Služby a spolupráca",
+      grp2_title: "Technológia a materiály",
+      grp3_title: "Kvalita, cena a dodanie",
+      q1: "Aké služby ZavisCAD poskytuje?",
+      a1: "Špecializujeme sa na zákazkovú 3D tlač funkčných náhradných dielov, malosériovú výrobu pre priemysel aj B2C sektor, 3D CAD návrhy a inžiniersku podporu pri vývoji produktov (R&amp;D).",
+      q2: "Viem u vás objednať 3D tlač, aj keď nemám 3D model?",
+      a2: "Áno. Poskytujeme plnohodnotné CAD dizajnovanie a reverzné inžinierstvo. Stačí nám poslať poškodený originálny diel, nákres, alebo fyzický kus namerať. Vytvoríme 3D CAD model a následne z neho vyrobíme funkčnú náhradu.",
+      q3: "Poskytujete aj podporu pri vývoji produktov (R&amp;D) a riadení projektov?",
+      a3: "Áno. Vďaka zázemiu v projektovom manažmente a R&amp;D vývoji vieme klientom pomôcť s konzultáciami konceptov, optimalizáciou dizajnu pre výrobu (DFM), prototypovaním a koordináciou technických projektov.",
+      q4: "Pripravujete podklady a komunikujete aj v cudzom jazyku?",
+      a4: "Áno, celá projektová komunikácia aj podklady (technická špecifikácia, výkresy, dokumentácia) môžu byť pripravené v anglickom jazyku, ak si to váš projekt vyžaduje.",
+      q5: "Na akej technológii a zariadeniach tlačíte?",
+      a5: "Používame FDM/FFF technológiu na priemyselnej tlačiarni <strong>Bambu Lab P2S Combo</strong>. Táto platforma nám umožňuje tlačiť s vysokou rozmerovou presnosťou pri vysokých rýchlostiach a pracovať s odskúšanými technickými materiálmi v riadenej uzavretej komore.",
+      q6: "Aký je maximálny rozmer tlačenej súčiastky?",
+      a6: "Maximálny objem tlače na jeden kus je <strong>256 × 256 × 256 mm</strong>. Väčšie komponenty alebo členité vzduchotechnické prechody vieme po dohovore rozdeliť na viacero častí so špeciálnymi spojmi a pevnostne zoskrutkovať či zvariť.",
+      q7: "Z akých materiálov vyrábate a ako si vybrať ten správny?",
+      a7_intro: "Materiál vyberáme vždy podľa účelu použitia súčiastky:",
+      a7_li1: "<strong>PETG</strong> — húževnatý a pružný plast odolný voči vode, chémii a teplotám do 80 °C. Ideálny na funkčné kryty, vzduchotechnické diely a podlahové inštalácie.",
+      a7_li2: "<strong>ASA</strong> — špičkový technický plast s vysokou UV stabilitou a odolnosťou voči poveternostným vplyvom a teplotám do 100 °C. Vhodný pre exteriér a komponenty vystavené slnku.",
+      a7_li3: "<strong>PLA</strong> — používame primárne na rýchle rozmerové overenie návrhu (prototypové vzorky) pred finálnou tlačou z technického plastu.",
+      q8: "Sú 3D tlačené diely dostatočne pevné?",
+      a8: "Áno. Pevnosť dielu závisí od orientácie vrstiev pri tlači a správneho CAD návrhu. Pri výrobe nastavujeme optimalizované hustoty výplne, vyšší počet obvodových stien (perimetrov) a v prípade potreby pridávame do geometrie vnútorné výstuhy či stĺpiky.",
+      q9: "Sú vaše diely z PETG vhodné do vzduchotechniky a vlhkého prostredia?",
+      a9: "Áno. PETG nenasakuje vodu, nekrehne a výborne odoláva prúdeniu vzduchu aj teplotám v rekuperačných či ventilačných systémoch. Vďaka nastaveniu plnostenných obvodov dodávame diely, ktoré sú 100 % vzduchotesné.",
+      q10: "Ako kontrolujete presnosť a kvalitu dielov?",
+      a10: "Pred odovzdaním zákazky vykonávame dôslednú kontrolu základných rozmerov (šírka, výška, hĺbka) pomocou posuvného meradla, aby sme mali istotu, že výtlačok rozmerovo plne zodpovedá požadovanému CAD modelu.",
+      q11: "Aká je cena zákazkovej 3D tlače a ako ju kalkulujete?",
+      a11_intro: "Cena sa odvíja od troch hlavných zložiek:",
+      a11_li1: "Spotreba materiálu (gramáž a typ plastu PETG/ASA/PLA)",
+      a11_li2: "Strojový čas (čistá doba tlače na tlačiarni)",
+      a11_li3: "CAD modelovanie / inžinierska príprava (ak nedodáte hotový 3D model v STL/STEP formáte)",
+      a11_outro: "Presnú cenovú ponuku vám vypracujeme nezáväzne po zaslaní dopytu.",
+      q12: "Aká je dodacia lehota?",
+      a12: "Termín dodania a dĺžka výroby sú vždy individuálne a po vzájomnej dohode. Závisia od aktuálnej vyťaženosti kapacít, náročnosti CAD návrhu a veľkosti tlačeného kusu.",
+      q13: "V akých formátoch môžem poslať podklady pre tlač?",
+      a13: "Najlepšie pre zachovanie presnosti sú CAD formáty <strong>STEP</strong> (.step / .stp) alebo <strong>IGES</strong> (.igs). Ak máte iba hotový sieťový model, akceptujeme aj <strong>STL</strong> (.stl) alebo <strong>3MF</strong> (.3mf).",
+      faqcta_text: 'Nenašiel si odpoveď, ktorú si hľadal?<span>Napíš nám priamo — odpovieme zvyčajne do 24 hodín.</span>',
+      faqcta_btn: "Kontaktovať nás →"
+    },
+    en: {
+      page_title: "Frequently Asked Questions — ZavisCAD",
+      nav_about: "About",
+      nav_faq: "FAQ",
+      nav_contact: "Contact",
+      nav_cta: "Send inquiry",
+      faq_eyebrow: "FAQ",
+      faq_h1: "Frequently Asked Questions",
+      faq_sub: "Everything you need to know about our technology, materials, pricing, and how we work together.",
+      grp1_title: "Services & collaboration",
+      grp2_title: "Technology & materials",
+      grp3_title: "Quality, price & delivery",
+      q1: "What services does ZavisCAD provide?",
+      a1: "We specialize in custom 3D printing of functional replacement parts, small-batch production for both industry and consumers, 3D CAD design, and engineering support for product development (R&amp;D).",
+      q2: "Can I order 3D printing even if I don't have a 3D model?",
+      a2: "Yes. We offer full CAD design and reverse engineering. Just send us the damaged original part, a sketch, or let us measure a physical piece. We'll create a 3D CAD model and then manufacture a functional replacement from it.",
+      q3: "Do you also support product development (R&amp;D) and project management?",
+      a3: "Yes. Thanks to my background in project management and R&amp;D, I can help clients with concept consultations, design-for-manufacturing (DFM) optimization, prototyping, and coordinating technical projects.",
+      q4: "Can you prepare documentation and communicate in a foreign language?",
+      a4: "Yes, all project communication and documentation (technical specifications, drawings, documentation) can be prepared in English if your project requires it.",
+      q5: "What technology and equipment do you print with?",
+      a5: "We use FDM/FFF technology on an industrial <strong>Bambu Lab P2S Combo</strong> printer. This platform lets us print with high dimensional accuracy at high speeds, using proven technical materials inside a controlled enclosed chamber.",
+      q6: "What's the maximum size of a printed part?",
+      a6: "The maximum build volume per part is <strong>256 × 256 × 256 mm</strong>. Larger components or intricate ductwork transitions can, by arrangement, be split into multiple parts with special joints and bolted or welded together for strength.",
+      q7: "What materials do you use, and how do I pick the right one?",
+      a7_intro: "We always choose the material based on the part's intended use:",
+      a7_li1: "<strong>PETG</strong> — a tough, flexible plastic resistant to water, chemicals, and temperatures up to 80 °C. Ideal for functional housings, ductwork parts, and floor installations.",
+      a7_li2: "<strong>ASA</strong> — a premium technical plastic with high UV stability and resistance to weathering and temperatures up to 100 °C. Suited for outdoor use and components exposed to sunlight.",
+      a7_li3: "<strong>PLA</strong> — used mainly for quick dimensional verification of a design (prototype samples) before final printing in a technical plastic.",
+      q8: "Are 3D printed parts strong enough?",
+      a8: "Yes. A part's strength depends on layer orientation during printing and a proper CAD design. In production we set optimized infill densities, a higher number of perimeter walls, and add internal ribs or posts to the geometry where needed.",
+      q9: "Are your PETG parts suitable for ductwork and humid environments?",
+      a9: "Yes. PETG doesn't absorb water, doesn't become brittle, and holds up well to airflow and temperatures in heat-recovery or ventilation systems. With solid-wall settings, we deliver parts that are 100% airtight.",
+      q10: "How do you check the accuracy and quality of parts?",
+      a10: "Before handing over an order, we carry out a thorough check of the key dimensions (width, height, depth) using calipers, to make sure the printed part fully matches the required CAD model.",
+      q11: "What does custom 3D printing cost, and how do you calculate it?",
+      a11_intro: "The price is based on three main components:",
+      a11_li1: "Material consumption (weight and type of plastic — PETG/ASA/PLA)",
+      a11_li2: "Machine time (net printing time on the printer)",
+      a11_li3: "CAD modeling / engineering preparation (if you don't supply a finished 3D model in STL/STEP format)",
+      a11_outro: "We'll prepare an exact, no-obligation quote for you after you send your inquiry.",
+      q12: "What's the turnaround time?",
+      a12: "The delivery date and production time are always individual and agreed upon together. They depend on current capacity, the complexity of the CAD design, and the size of the printed part.",
+      q13: "What file formats can I send for printing?",
+      a13: "For the best accuracy, CAD formats like <strong>STEP</strong> (.step / .stp) or <strong>IGES</strong> (.igs) work best. If you only have a finished mesh model, we also accept <strong>STL</strong> (.stl) or <strong>3MF</strong> (.3mf).",
+      faqcta_text: "Didn't find the answer you were looking for?<span>Message us directly — we usually reply within 24 hours.</span>",
+      faqcta_btn: "Contact us →"
+    }
+  };
+
+  var currentLang = 'sk';
+
+  function setLang(lang){
+    if(!translations[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.title = translations[lang].page_title;
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(translations[lang][key] !== undefined){ el.innerHTML = translations[lang][key]; }
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    // recalculate any open accordion heights since translated text may reflow
+    document.querySelectorAll('.faq-item.open .faq-answer').forEach(function(answer){
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    });
+  }
 </script>
 </body>
 </html>

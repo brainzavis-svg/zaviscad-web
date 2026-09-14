@@ -48,6 +48,20 @@
   .nav-cta:hover{background:var(--blue);}
   @media (max-width:860px){ nav ul{display:none;} }
 
+  .lang-switch{
+    display:flex; align-items:center; gap:2px;
+    border:1px solid var(--line); padding:3px;
+    font-family:'JetBrains Mono', monospace;
+  }
+  .lang-btn{
+    background:none; border:none; padding:5px 10px;
+    font-size:12px; font-weight:600; letter-spacing:0.03em;
+    color:var(--grey-text-light);
+    transition:background .15s ease, color .15s ease;
+  }
+  .lang-btn.active{ background:var(--charcoal); color:var(--white); }
+  .lang-btn:not(.active):hover{ color:var(--charcoal); }
+
   /* ---------- INTRO ---------- */
   .intro{
     padding:90px 40px 70px;
@@ -156,17 +170,23 @@
     </a>
     <nav>
       <ul>
-        <li><a href="o-mne.html">O mne</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="index.html#kontakt">Kontakt</a></li>
+        <li><a href="o-mne.html" data-i18n="nav_about">O mne</a></li>
+        <li><a href="faq.html" data-i18n="nav_faq">FAQ</a></li>
+        <li><a href="index.html#kontakt" data-i18n="nav_contact">Kontakt</a></li>
       </ul>
     </nav>
-    <a href="index.html#kontakt" class="nav-cta">Vyplniť dopyt</a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div class="lang-switch">
+        <button type="button" class="lang-btn active" data-lang="sk" onclick="setLang('sk')">SK</button>
+        <button type="button" class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="index.html#kontakt" class="nav-cta" data-i18n="nav_cta">Vyplniť dopyt</a>
+    </div>
   </div>
 </header>
 
 <div class="intro">
-  <div class="eyebrow">O MNE</div>
+  <div class="eyebrow" data-i18n="about_eyebrow">O MNE</div>
 
   <div class="intro-head">
     <div class="avatar">B</div>
@@ -176,37 +196,37 @@
   </div>
 
   <div class="intro-body">
-    <p>Ahoj, volám sa Branislav (pre kamarátov Braňo). Vyštudoval som strojárstvo a profesionálne pracujem ako projektový manažér na vývojových (R&amp;D) projektoch. Technika ma však sprevádza aj mimo práce — odmalička ma bavilo veci rozoberať, skúmať, ako fungujú zvnútra, a opravovať ich.</p>
-    <p>Projekt ZavisCAD vznikol prirodzene ako spojenie mojej pracovnej praxe a tejto záľuby. Pomáham premeniť nápady na reálne diely — či už ide o náhradnú súčiastku, ktorú už nevieš kúpiť, atypický prechod do vzduchotechniky, alebo prototyp na odskúšanie.</p>
+    <p data-i18n="about_p1">Ahoj, volám sa Branislav (pre kamarátov Braňo). Vyštudoval som strojárstvo a profesionálne pracujem ako projektový manažér na vývojových (R&amp;D) projektoch. Technika ma však sprevádza aj mimo práce — odmalička ma bavilo veci rozoberať, skúmať, ako fungujú zvnútra, a opravovať ich.</p>
+    <p data-i18n="about_p2">Projekt ZavisCAD vznikol prirodzene ako spojenie mojej pracovnej praxe a tejto záľuby. Pomáham premeniť nápady na reálne diely — či už ide o náhradnú súčiastku, ktorú už nevieš kúpiť, atypický prechod do vzduchotechniky, alebo prototyp na odskúšanie.</p>
   </div>
 </div>
 
 <div class="approach">
   <div class="approach-inner">
-    <h2>Ako k projektom pristupujem</h2>
+    <h2 data-i18n="approach_h2">Ako k projektom pristupujem</h2>
 
     <div class="approach-list">
       <div class="approach-item">
         <span class="approach-num mono">01</span>
         <div>
-          <h3>Inžiniersky a manažérsky pohľad</h3>
-          <p>Pri každom dopyte zvažujem nielen to, ako diel vytlačiť, ale aj ako bude fungovať v praxi. Podľa toho odporučím vhodný materiál (PETG, ASA) a úpravu geometrie.</p>
+          <h3 data-i18n="approach1_title">Inžiniersky a manažérsky pohľad</h3>
+          <p data-i18n="approach1_desc">Pri každom dopyte zvažujem nielen to, ako diel vytlačiť, ale aj ako bude fungovať v praxi. Podľa toho odporučím vhodný materiál (PETG, ASA) a úpravu geometrie.</p>
         </div>
       </div>
 
       <div class="approach-item">
         <span class="approach-num mono">02</span>
         <div>
-          <h3>Osobný prístup</h3>
-          <p>Všetko riešim priamo — od úvodnej konzultácie a merania cez 3D CAD model až po samotnú tlač.</p>
+          <h3 data-i18n="approach2_title">Osobný prístup</h3>
+          <p data-i18n="approach2_desc">Všetko riešim priamo — od úvodnej konzultácie a merania cez 3D CAD model až po samotnú tlač.</p>
         </div>
       </div>
 
       <div class="approach-item">
         <span class="approach-num mono">03</span>
         <div>
-          <h3>Flexibilita</h3>
-          <p>Keďže ide o moju záľubu, na termínoch a postupe sa vždy vieme férovo a individuálne dohodnúť.</p>
+          <h3 data-i18n="approach3_title">Flexibilita</h3>
+          <p data-i18n="approach3_desc">Keďže ide o moju záľubu, na termínoch a postupe sa vždy vieme férovo a individuálne dohodnúť.</p>
         </div>
       </div>
     </div>
@@ -214,8 +234,8 @@
 </div>
 
 <div class="about-cta">
-  <p>Ak máš v hlave nápad, potrebuješ niečo opraviť alebo vyrobiť konkrétny diel, napíš mi a pozrieme sa na to.</p>
-  <a href="index.html#kontakt">Napísať dopyt →</a>
+  <p data-i18n="about_cta_text">Ak máš v hlave nápad, potrebuješ niečo opraviť alebo vyrobiť konkrétny diel, napíš mi a pozrieme sa na to.</p>
+  <a href="index.html#kontakt" data-i18n="about_cta_btn">Napísať dopyt →</a>
 </div>
 
 <footer>
@@ -231,13 +251,75 @@
       </svg>
     </div>
     <div class="footer-links">
-      <a href="index.html">Domov</a>
-      <a href="o-mne.html">O mne</a>
-      <a href="faq.html">FAQ</a>
-      <a href="index.html#kontakt">Kontakt</a>
+      <a href="index.html" data-i18n="footer_home">Domov</a>
+      <a href="o-mne.html" data-i18n="nav_about">O mne</a>
+      <a href="faq.html" data-i18n="nav_faq">FAQ</a>
+      <a href="index.html#kontakt" data-i18n="nav_contact">Kontakt</a>
     </div>
   </div>
 </footer>
+
+<script>
+  var translations = {
+    sk: {
+      page_title: "O mne — ZavisCAD",
+      nav_about: "O mne",
+      nav_faq: "FAQ",
+      nav_contact: "Kontakt",
+      nav_cta: "Vyplniť dopyt",
+      footer_home: "Domov",
+      about_eyebrow: "O MNE",
+      about_p1: "Ahoj, volám sa Branislav (pre kamarátov Braňo). Vyštudoval som strojárstvo a profesionálne pracujem ako projektový manažér na vývojových (R&amp;D) projektoch. Technika ma však sprevádza aj mimo práce — odmalička ma bavilo veci rozoberať, skúmať, ako fungujú zvnútra, a opravovať ich.",
+      about_p2: "Projekt ZavisCAD vznikol prirodzene ako spojenie mojej pracovnej praxe a tejto záľuby. Pomáham premeniť nápady na reálne diely — či už ide o náhradnú súčiastku, ktorú už nevieš kúpiť, atypický prechod do vzduchotechniky, alebo prototyp na odskúšanie.",
+      approach_h2: "Ako k projektom pristupujem",
+      approach1_title: "Inžiniersky a manažérsky pohľad",
+      approach1_desc: "Pri každom dopyte zvažujem nielen to, ako diel vytlačiť, ale aj ako bude fungovať v praxi. Podľa toho odporučím vhodný materiál (PETG, ASA) a úpravu geometrie.",
+      approach2_title: "Osobný prístup",
+      approach2_desc: "Všetko riešim priamo — od úvodnej konzultácie a merania cez 3D CAD model až po samotnú tlač.",
+      approach3_title: "Flexibilita",
+      approach3_desc: "Keďže ide o moju záľubu, na termínoch a postupe sa vždy vieme férovo a individuálne dohodnúť.",
+      about_cta_text: "Ak máš v hlave nápad, potrebuješ niečo opraviť alebo vyrobiť konkrétny diel, napíš mi a pozrieme sa na to.",
+      about_cta_btn: "Napísať dopyt →"
+    },
+    en: {
+      page_title: "About — ZavisCAD",
+      nav_about: "About",
+      nav_faq: "FAQ",
+      nav_contact: "Contact",
+      nav_cta: "Send inquiry",
+      footer_home: "Home",
+      about_eyebrow: "ABOUT ME",
+      about_p1: "Hi, I'm Branislav. I studied mechanical engineering and work professionally as a project manager on R&amp;D development projects. But technology has followed me outside of work too: ever since I was a kid I've loved taking things apart, figuring out how they work inside, and fixing them.",
+      about_p2: "ZavisCAD grew naturally out of combining my professional experience with this passion. I help turn ideas into real parts — whether it's a replacement part you can no longer buy, an unusual ductwork transition, or a prototype to test out.",
+      approach_h2: "How I approach projects",
+      approach1_title: "An engineering and management mindset",
+      approach1_desc: "With every inquiry, I think not just about how to print the part, but how it will actually perform in practice. Based on that, I recommend the right material (PETG, ASA) and any geometry adjustments.",
+      approach2_title: "A personal, hands-on approach",
+      approach2_desc: "I handle everything directly — from the initial consultation and measurements, through the 3D CAD model, to the final print.",
+      approach3_title: "Flexibility",
+      approach3_desc: "Since this is my passion project, we can always agree on timelines and the process fairly and individually.",
+      about_cta_text: "If you've got an idea in mind, need something fixed, or need a specific part made, get in touch and let's take a look.",
+      about_cta_btn: "Send an inquiry →"
+    }
+  };
+
+  var currentLang = 'sk';
+
+  function setLang(lang){
+    if(!translations[lang]) return;
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.title = translations[lang].page_title;
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(translations[lang][key] !== undefined){ el.innerHTML = translations[lang][key]; }
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+</script>
 
 </body>
 </html>
