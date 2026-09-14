@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mne — ZavisCAD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --off-white:#f8f9fb;
+    --charcoal:#14171d;
+    --charcoal-2:#1f242d;
+    --blue:#0055ff;
+    --blue-light:#5c93ff;
+    --grey-text:#6b7280;
+    --grey-text-light:#9aa2b1;
+    --line:#e6e9f0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Inter', sans-serif; color:var(--charcoal); background:var(--white); -webkit-font-smoothing:antialiased; }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1280px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+  }
+  .logo{ display:flex; align-items:center; gap:10px; }
+  .brand-logo{ height:34px; width:auto; display:block; }
+  nav ul{list-style:none; display:flex; gap:36px;}
+  nav a{ font-size:14px; font-weight:500; color:var(--charcoal-2); }
+  nav a:hover{color:var(--blue);}
+  .nav-cta{
+    background:var(--charcoal); color:var(--white);
+    padding:10px 20px; font-size:13.5px; font-weight:600;
+    display:inline-block; transition:background .15s ease;
+  }
+  .nav-cta:hover{background:var(--blue);}
+  @media (max-width:860px){ nav ul{display:none;} }
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    padding:90px 40px 70px;
+    max-width:760px; margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--blue);
+    letter-spacing:0.12em; margin-bottom:28px; text-transform:uppercase;
+  }
+  .eyebrow::before{ content:''; width:20px; height:1px; background:var(--blue); }
+
+  .intro-head{
+    display:flex; align-items:center; gap:22px; margin-bottom:36px;
+  }
+  .avatar{
+    flex-shrink:0; width:72px; height:72px; border-radius:50%;
+    background:linear-gradient(135deg, var(--blue), var(--charcoal));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:24px; color:var(--white);
+  }
+  .intro-head h1{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(26px,3.5vw,34px); letter-spacing:-0.01em; margin-bottom:6px;
+  }
+  .intro-head .role{ color:var(--grey-text); font-size:14.5px; }
+
+  .intro-body p{
+    font-size:16.5px; line-height:1.8; color:var(--charcoal-2);
+    margin-bottom:22px;
+  }
+
+  /* ---------- APPROACH ---------- */
+  .approach{
+    background:var(--off-white);
+    padding:70px 40px;
+  }
+  .approach-inner{ max-width:760px; margin:0 auto; }
+  .approach h2{
+    font-family:'Space Grotesk', sans-serif; font-size:24px; font-weight:700;
+    letter-spacing:-0.01em; margin-bottom:36px;
+  }
+  .approach-list{ display:flex; flex-direction:column; gap:0; }
+  .approach-item{
+    display:flex; gap:24px; padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .approach-item:first-child{ padding-top:0; }
+  .approach-item:last-child{ border-bottom:none; padding-bottom:0; }
+  .approach-num{
+    flex-shrink:0; font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--blue);
+    padding-top:2px;
+  }
+  .approach-item h3{
+    font-family:'Space Grotesk', sans-serif; font-size:16.5px; font-weight:700;
+    margin-bottom:8px;
+  }
+  .approach-item p{
+    font-size:15px; line-height:1.7; color:var(--grey-text);
+  }
+
+  /* ---------- CTA ---------- */
+  .about-cta{
+    max-width:760px; margin:70px auto 100px; padding:0 40px;
+    text-align:center;
+  }
+  .about-cta p{
+    font-family:'Space Grotesk', sans-serif; font-size:22px; font-weight:700;
+    letter-spacing:-0.01em; margin-bottom:24px; line-height:1.4;
+  }
+  .about-cta a{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--charcoal); color:var(--white);
+    padding:16px 32px; font-size:14.5px; font-weight:600;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .about-cta a:hover{ background:var(--blue); transform:translateY(-1px); }
+
+  footer{
+    background:var(--charcoal); color:var(--grey-text-light);
+    padding:40px 40px 28px;
+  }
+  .footer-inner{
+    max-width:1280px; margin:0 auto;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  footer .logo{ color:var(--white); }
+  .footer-links{ display:flex; gap:28px; flex-wrap:wrap; }
+  .footer-links a{ font-size:13.5px; color:var(--grey-text-light); }
+  .footer-links a:hover{ color:var(--white); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg class="brand-logo" viewBox="10 15 350 105" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZavisCAD">
+        <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+        <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+        <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+        <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="135" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#0F172A">Zavis</text>
+        <text x="245" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#0284C7">CAD</text>
+      </svg>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="o-mne.html">O mne</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a href="index.html#kontakt" class="nav-cta">Vyplniť dopyt</a>
+  </div>
+</header>
+
+<div class="intro">
+  <div class="eyebrow">O MNE</div>
+
+  <div class="intro-head">
+    <div class="avatar">B</div>
+    <div>
+      <h1>Branislav</h1>
+    </div>
+  </div>
+
+  <div class="intro-body">
+    <p>Ahoj, volám sa Branislav (pre kamarátov Braňo). Vyštudoval som strojárstvo a profesionálne pracujem ako projektový manažér na vývojových (R&amp;D) projektoch. Technika ma však sprevádza aj mimo práce — odmalička ma bavilo veci rozoberať, skúmať, ako fungujú zvnútra, a opravovať ich.</p>
+    <p>Projekt ZavisCAD vznikol prirodzene ako spojenie mojej pracovnej praxe a tejto záľuby. Pomáham premeniť nápady na reálne diely — či už ide o náhradnú súčiastku, ktorú už nevieš kúpiť, atypický prechod do vzduchotechniky, alebo prototyp na odskúšanie.</p>
+  </div>
+</div>
+
+<div class="approach">
+  <div class="approach-inner">
+    <h2>Ako k projektom pristupujem</h2>
+
+    <div class="approach-list">
+      <div class="approach-item">
+        <span class="approach-num mono">01</span>
+        <div>
+          <h3>Inžiniersky a manažérsky pohľad</h3>
+          <p>Pri každom dopyte zvažujem nielen to, ako diel vytlačiť, ale aj ako bude fungovať v praxi. Podľa toho odporučím vhodný materiál (PETG, ASA) a úpravu geometrie.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num mono">02</span>
+        <div>
+          <h3>Osobný prístup</h3>
+          <p>Všetko riešim priamo — od úvodnej konzultácie a merania cez 3D CAD model až po samotnú tlač.</p>
+        </div>
+      </div>
+
+      <div class="approach-item">
+        <span class="approach-num mono">03</span>
+        <div>
+          <h3>Flexibilita</h3>
+          <p>Keďže ide o moju záľubu, na termínoch a postupe sa vždy vieme férovo a individuálne dohodnúť.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-cta">
+  <p>Ak máš v hlave nápad, potrebuješ niečo opraviť alebo vyrobiť konkrétny diel, napíš mi a pozrieme sa na to.</p>
+  <a href="index.html#kontakt">Napísať dopyt →</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="logo">
+      <svg class="brand-logo" viewBox="10 15 350 105" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZavisCAD">
+        <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+        <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+        <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+        <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="135" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#FFFFFF">Zavis</text>
+        <text x="245" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#38BDF8">CAD</text>
+      </svg>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Domov</a>
+      <a href="o-mne.html">O mne</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
