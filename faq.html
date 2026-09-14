@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Časté otázky — ZavisCAD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --off-white:#f8f9fb;
+    --charcoal:#14171d;
+    --charcoal-2:#1f242d;
+    --blue:#0055ff;
+    --blue-light:#5c93ff;
+    --grey-text:#6b7280;
+    --grey-text-light:#9aa2b1;
+    --line:#e6e9f0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Inter', sans-serif; color:var(--charcoal); background:var(--white); -webkit-font-smoothing:antialiased; }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  button{font-family:inherit; cursor:pointer;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,255,255,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1280px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+  }
+  .logo{ display:flex; align-items:center; gap:10px; }
+  .brand-logo{ height:34px; width:auto; display:block; }
+  nav ul{list-style:none; display:flex; gap:36px;}
+  nav a{ font-size:14px; font-weight:500; color:var(--charcoal-2); }
+  nav a:hover{color:var(--blue);}
+  .nav-cta{
+    background:var(--charcoal); color:var(--white);
+    padding:10px 20px; font-size:13.5px; font-weight:600;
+    display:inline-block; transition:background .15s ease;
+  }
+  .nav-cta:hover{background:var(--blue);}
+  @media (max-width:860px){ nav ul{display:none;} }
+
+  .page-head{
+    padding:90px 40px 60px;
+    max-width:720px; margin:0 auto; text-align:center;
+  }
+  .page-head .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; color:var(--blue);
+    letter-spacing:0.12em; margin-bottom:22px; text-transform:uppercase;
+  }
+  .page-head .eyebrow::before{ content:''; width:20px; height:1px; background:var(--blue); }
+  .page-head h1{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(32px,4.5vw,48px); letter-spacing:-0.02em; margin-bottom:16px; line-height:1.1;
+  }
+  .page-head p{ color:var(--grey-text); font-size:17px; line-height:1.6; }
+
+  .faq-wrap{
+    max-width:760px; margin:0 auto; padding:0 40px 60px;
+  }
+
+  .faq-group{ margin-bottom:64px; }
+  .faq-group-title{
+    display:flex; align-items:baseline; gap:14px;
+    margin-bottom:8px; padding-bottom:18px;
+    border-bottom:1px solid var(--charcoal);
+  }
+  .faq-group-num{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--blue);
+  }
+  .faq-group-title h2{
+    font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:700;
+    letter-spacing:-0.01em;
+  }
+
+  .faq-item{ border-bottom:1px solid var(--line); }
+
+  .faq-question{
+    width:100%; text-align:left; background:none; border:none;
+    padding:26px 0; display:flex; align-items:flex-start; justify-content:space-between;
+    gap:24px;
+  }
+  .faq-question .q-text{
+    font-size:16px; font-weight:600; color:var(--charcoal); line-height:1.5;
+    transition:color .15s ease;
+  }
+  .faq-item:hover .q-text{ color:var(--blue); }
+  .faq-icon{
+    flex-shrink:0; width:20px; height:20px; margin-top:2px;
+    position:relative;
+  }
+  .faq-icon::before, .faq-icon::after{
+    content:''; position:absolute; background:var(--charcoal);
+    transition:transform .2s ease, background .15s ease, opacity .2s ease;
+  }
+  .faq-icon::before{ width:100%; height:1.5px; top:50%; left:0; transform:translateY(-50%); }
+  .faq-icon::after{ width:1.5px; height:100%; left:50%; top:0; transform:translateX(-50%); }
+  .faq-item.open .faq-icon::after{ opacity:0; }
+  .faq-item:hover .faq-icon::before,
+  .faq-item:hover .faq-icon::after{ background:var(--blue); }
+
+  .faq-answer{
+    max-height:0; overflow:hidden;
+    transition:max-height .25s ease;
+  }
+  .faq-answer-inner{
+    padding:0 0 28px; padding-left:36px;
+    font-size:15px; line-height:1.75; color:var(--grey-text);
+    border-left:2px solid var(--blue);
+    margin-left:1px;
+  }
+  .faq-answer-inner p{ margin-bottom:12px; }
+  .faq-answer-inner p:last-child{ margin-bottom:0; }
+  .faq-answer-inner ul{ padding-left:18px; margin-top:8px; }
+  .faq-answer-inner li{ margin-bottom:10px; }
+  .faq-answer-inner li:last-child{ margin-bottom:0; }
+  .faq-answer-inner strong{ color:var(--charcoal); font-weight:600; }
+
+  .faq-cta{
+    margin-top:10px; padding:40px; background:var(--off-white);
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+    text-align:left;
+  }
+  .faq-cta p{ font-size:16px; font-weight:600; }
+  .faq-cta span{ display:block; font-size:14px; font-weight:400; color:var(--grey-text); margin-top:6px; }
+  .faq-cta a{
+    background:var(--charcoal); color:var(--white); padding:14px 28px;
+    font-size:13.5px; font-weight:600; transition:background .15s ease; flex-shrink:0;
+  }
+  .faq-cta a:hover{ background:var(--blue); }
+
+  footer{
+    background:var(--charcoal); color:var(--grey-text-light);
+    padding:40px 40px 28px;
+  }
+  .footer-inner{
+    max-width:1280px; margin:0 auto;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  footer .logo{ color:var(--white); }
+  .footer-links{ display:flex; gap:28px; flex-wrap:wrap; }
+  .footer-links a{ font-size:13.5px; color:var(--grey-text-light); }
+  .footer-links a:hover{ color:var(--white); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <svg class="brand-logo" viewBox="10 15 350 105" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZavisCAD">
+        <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+        <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+        <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+        <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="135" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#0F172A">Zavis</text>
+        <text x="245" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#0284C7">CAD</text>
+      </svg>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="index.html#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a href="index.html#kontakt" class="nav-cta">Vyplniť dopyt</a>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="eyebrow">FAQ</div>
+  <h1>Často kladené otázky</h1>
+  <p>Všetko, čo potrebuješ vedieť o technológii, materiáloch, cene a spolupráci s nami.</p>
+</div>
+
+<div class="faq-wrap">
+
+  <!-- ============ SKUPINA 1 ============ -->
+  <div class="faq-group">
+    <div class="faq-group-title">
+      <span class="faq-group-num mono">01</span>
+      <h2>Služby a spolupráca</h2>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Aké služby ZavisCAD poskytuje?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Špecializujeme sa na zákazkovú 3D tlač funkčných náhradných dielov, malosériovú výrobu pre priemysel aj B2C sektor, 3D CAD návrhy a inžiniersku podporu pri vývoji produktov (R&amp;D).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Viem u vás objednať 3D tlač, aj keď nemám 3D model?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Áno. Poskytujeme plnohodnotné CAD dizajnovanie a reverzné inžinierstvo. Stačí nám poslať poškodený originálny diel, nákres, alebo fyzický kus namerať. Vytvoríme 3D CAD model a následne z neho vyrobíme funkčnú náhradu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Poskytujete aj podporu pri vývoji produktov (R&amp;D) a riadení projektov?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Áno. Vďaka zázemiu v projektovom manažmente a R&amp;D vývoji vieme klientom pomôcť s konzultáciami konceptov, optimalizáciou dizajnu pre výrobu (DFM), prototypovaním a koordináciou technických projektov.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Pripravujete podklady a komunikujete aj v cudzom jazyku?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Áno, celá projektová komunikácia aj podklady (technická špecifikácia, výkresy, dokumentácia) môžu byť pripravené v anglickom jazyku, ak si to váš projekt vyžaduje.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SKUPINA 2 ============ -->
+  <div class="faq-group">
+    <div class="faq-group-title">
+      <span class="faq-group-num mono">02</span>
+      <h2>Technológia a materiály</h2>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Na akej technológii a zariadeniach tlačíte?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Používame FDM/FFF technológiu na priemyselnej tlačiarni <strong>Bambu Lab P2S Combo</strong>. Táto platforma nám umožňuje tlačiť s vysokou rozmerovou presnosťou pri vysokých rýchlostiach a pracovať s odskúšanými technickými materiálmi v riadenej uzavretej komore.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Aký je maximálny rozmer tlačenej súčiastky?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Maximálny objem tlače na jeden kus je <strong>256 × 256 × 256 mm</strong>. Väčšie komponenty alebo členité vzduchotechnické prechody vieme po dohovore rozdeliť na viacero častí so špeciálnymi spojmi a pevnostne zoskrutkovať či zvariť.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Z akých materiálov vyrábate a ako si vybrať ten správny?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Materiál vyberáme vždy podľa účelu použitia súčiastky:</p>
+          <ul>
+            <li><strong>PETG</strong> — húževnatý a pružný plast odolný voči vode, chémii a teplotám do 80 °C. Ideálny na funkčné kryty, vzduchotechnické diely a podlahové inštalácie.</li>
+            <li><strong>ASA</strong> — špičkový technický plast s vysokou UV stabilitou a odolnosťou voči poveternostným vplyvom a teplotám do 100 °C. Vhodný pre exteriér a komponenty vystavené slnku.</li>
+            <li><strong>PLA</strong> — používame primárne na rýchle rozmerové overenie návrhu (prototypové vzorky) pred finálnou tlačou z technického plastu.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Sú 3D tlačené diely dostatočne pevné?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Áno. Pevnosť dielu závisí od orientácie vrstiev pri tlači a správneho CAD návrhu. Pri výrobe nastavujeme optimalizované hustoty výplne, vyšší počet obvodových stien (perimetrov) a v prípade potreby pridávame do geometrie vnútorné výstuhy či stĺpiky.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Sú vaše diely z PETG vhodné do vzduchotechniky a vlhkého prostredia?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Áno. PETG nenasakuje vodu, nekrehne a výborne odoláva prúdeniu vzduchu aj teplotám v rekuperačných či ventilačných systémoch. Vďaka nastaveniu plnostenných obvodov dodávame diely, ktoré sú 100 % vzduchotesné.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SKUPINA 3 ============ -->
+  <div class="faq-group">
+    <div class="faq-group-title">
+      <span class="faq-group-num mono">03</span>
+      <h2>Kvalita, cena a dodanie</h2>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Ako kontrolujete presnosť a kvalitu dielov?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Pred odovzdaním zákazky vykonávame dôslednú kontrolu základných rozmerov (šírka, výška, hĺbka) pomocou posuvného meradla, aby sme mali istotu, že výtlačok rozmerovo plne zodpovedá požadovanému CAD modelu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Aká je cena zákazkovej 3D tlače a ako ju kalkulujete?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Cena sa odvíja od troch hlavných zložiek:</p>
+          <ul>
+            <li>Spotreba materiálu (gramáž a typ plastu PETG/ASA/PLA)</li>
+            <li>Strojový čas (čistá doba tlače na tlačiarni)</li>
+            <li>CAD modelovanie / inžinierska príprava (ak nedodáte hotový 3D model v STL/STEP formáte)</li>
+          </ul>
+          <p>Presnú cenovú ponuku vám vypracujeme nezáväzne po zaslaní dopytu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">Aká je dodacia lehota?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Termín dodania a dĺžka výroby sú vždy individuálne a po vzájomnej dohode. Závisia od aktuálnej vyťaženosti kapacít, náročnosti CAD návrhu a veľkosti tlačeného kusu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="q-text">V akých formátoch môžem poslať podklady pre tlač?</span>
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p>Najlepšie pre zachovanie presnosti sú CAD formáty <strong>STEP</strong> (.step / .stp) alebo <strong>IGES</strong> (.igs). Ak máte iba hotový sieťový model, akceptujeme aj <strong>STL</strong> (.stl) alebo <strong>3MF</strong> (.3mf).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-cta">
+    <p>Nenašiel si odpoveď, ktorú si hľadal?
+      <span>Napíš nám priamo — odpovieme zvyčajne do 24 hodín.</span>
+    </p>
+    <a href="index.html#kontakt">Kontaktovať nás →</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="logo">
+      <svg class="brand-logo" viewBox="10 15 350 105" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ZavisCAD">
+        <polygon points="70,30 110,50 70,70 30,50" fill="#0284C7"/>
+        <polygon points="30,50 70,70 70,110 30,90" fill="#0369A1"/>
+        <polygon points="70,70 110,50 110,90 70,110" fill="#38BDF8"/>
+        <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="135" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#FFFFFF">Zavis</text>
+        <text x="245" y="80" font-family="Arial, sans-serif" font-weight="bold" font-size="42" fill="#38BDF8">CAD</text>
+      </svg>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Domov</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-answer');
+      var isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = null;
+        }
+      });
+
+      if(isOpen){
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>
