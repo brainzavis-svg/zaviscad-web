@@ -244,6 +244,7 @@
     display:flex; flex-direction:column;
   }
   .illust-card svg{width:100%; height:100%; flex:1;}
+  .illust-card img{width:100%; height:100%; flex:1; object-fit:cover; display:block;}
   .illust-card .illust-label{
     position:absolute; top:10px; left:10px;
     font-family:'JetBrains Mono', monospace; font-size:10px;
@@ -399,6 +400,7 @@
     </div>
     <nav>
       <ul>
+        <li><a href="clanky.html" data-i18n="nav_articles">Články</a></li>
         <li><a href="#kontakt" data-i18n="nav_contact">Kontakt</a></li>
       </ul>
     </nav>
@@ -500,48 +502,21 @@
       <polyline points="45,42 95,42 45,98 95,98" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div class="illust-row">
-      <!-- photo-style: PDF document on desk -->
+      <!-- real photo: old/legacy documentation -->
       <div class="illust-card photo">
-        <span class="illust-label" data-i18n="illust_b_photo_label">2D PDF</span>
-        <svg viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
-          <rect width="160" height="120" fill="#c7cdd8"/>
-          <!-- paper sheet -->
-          <path d="M28 10 L118 10 L132 24 L132 108 L28 108 Z" fill="#ffffff" stroke="#aeb5c2" stroke-width="1"/>
-          <path d="M118 10 L118 24 L132 24 Z" fill="#e4e8ee" stroke="#aeb5c2" stroke-width="1"/>
-          <!-- drawing content -->
-          <rect x="40" y="32" width="40" height="34" fill="none" stroke="#8a92a3" stroke-width="1"/>
-          <circle cx="60" cy="49" r="9" fill="none" stroke="#8a92a3" stroke-width="1"/>
-          <path d="M40 78 L98 78 M40 84 L88 84 M40 90 L94 90" stroke="#c3c9d4" stroke-width="1.5"/>
-          <path d="M40 24 L26 24 L26 20 M40 24 L26 24 L26 28" stroke="#e5484d" stroke-width="0.8" opacity="0"/>
-          <text x="40" y="100" font-family="JetBrains Mono" font-size="6.5" fill="#8a92a3">Ø42.0mm — REV.03</text>
-          <!-- red PDF tag -->
-          <rect x="26" y="10" width="30" height="14" fill="#e5484d"/>
-          <text x="31" y="20" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#ffffff">PDF</text>
-        </svg>
+        <span class="illust-label" data-i18n="illust_b_photo_label">STARÝ VÝKRES</span>
+        <img src="vykres-stary.jpg" alt="Stará technická dokumentácia">
       </div>
 
       <div class="illust-arrow">
         <svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
 
-      <!-- CAD viewport style: clean technical drawing -->
+      <!-- real CAD drawing -->
       <div class="illust-card cad">
-        <span class="illust-label" data-i18n="illust_b_cad_label">3D CAD VÝKRES</span>
+        <span class="illust-label" data-i18n="illust_b_cad_label">PRESNÝ CAD VÝKRES</span>
         <div class="cad-chrome"><span></span><span></span><span></span></div>
-        <svg viewBox="0 0 160 110" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="92" x2="160" y2="92" stroke="#2a3040" stroke-width="1"/>
-          <line x1="0" y1="72" x2="160" y2="72" stroke="#2a3040" stroke-width="0.6"/>
-          <g stroke="#5c93ff" stroke-width="1.2" fill="none" stroke-linejoin="round">
-            <path d="M55 10 L105 10 L105 45 L80 60 L55 45 Z"/>
-            <path d="M55 10 L80 25 L105 10 M80 25 L80 60" opacity="0.6"/>
-            <circle cx="80" cy="35" r="8" opacity="0.85"/>
-          </g>
-          <!-- dimension lines -->
-          <path d="M40 10 L40 45" stroke="#5c93ff" stroke-width="0.8" opacity="0.5"/>
-          <path d="M36 10 L44 10 M36 45 L44 45" stroke="#5c93ff" stroke-width="0.8" opacity="0.5"/>
-          <text x="14" y="30" font-family="JetBrains Mono" font-size="6.5" fill="#5c93ff" opacity="0.8">35mm</text>
-          <text x="60" y="102" font-family="JetBrains Mono" font-size="7" fill="#5c93ff" opacity="0.8">TOLERANCIA ±0.05</text>
-        </svg>
+        <img src="vykres-novy.jpg" alt="Presný CAD výkres">
       </div>
     </div>
 
@@ -629,6 +604,7 @@
       </svg>
     </div>
     <div class="footer-links">
+      <a href="clanky.html" data-i18n="nav_articles">Články</a>
       <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
     </div>
   </div>
@@ -643,6 +619,7 @@
       sk: {
         page_title: "ZavisCAD — Od nápadu k hotovému dielu",
         nav_contact: "Kontakt",
+        nav_articles: "Články",
         nav_cta: "Vyplniť dopyt",
         hero_eyebrow: "3D TLAČ · CAD MODELOVANIE",
         hero_l1: "ZAVISCAD: OD NÁPADU",
@@ -659,8 +636,8 @@
         panelA_solution_label: "Riešenie",
         panelA_solution: "Prekreslíme váš zlomený diel a vytlačíme plne funkčný náhradný kus. Pomôžeme zhmotniť vaše nápady do reality.",
         panelA_cta: "POŽIADAŤ O PREKRESLENIE/TLAČ",
-        illust_b_photo_label: "2D PDF",
-        illust_b_cad_label: "3D CAD VÝKRES",
+        illust_b_photo_label: "STARÝ VÝKRES",
+        illust_b_cad_label: "PRESNÝ CAD VÝKRES",
         panelB_tag: "PRE FIRMY",
         panelB_heading: "Inžinierska presnosť pre vašu výrobu.",
         panelB_problem: "Potrebujete navrhnúť vlastné 3D prípravky pre výrobu? Máte len starú 2D dokumentáciu v PDF a potrebujete presné 3D modely? Nestíha vaša konštrukcia?",
@@ -693,6 +670,7 @@
       en: {
         page_title: "ZavisCAD — From Idea to Finished Part",
         nav_contact: "Contact",
+        nav_articles: "Articles",
         nav_cta: "Send inquiry",
         hero_eyebrow: "3D PRINTING · CAD MODELING",
         hero_l1: "ZAVISCAD: FROM IDEA",
@@ -709,8 +687,8 @@
         panelA_solution_label: "Solution",
         panelA_solution: "We'll redesign your broken part and 3D print a fully functional replacement. We help turn your ideas into reality.",
         panelA_cta: "REQUEST REDESIGN / PRINT",
-        illust_b_photo_label: "2D PDF",
-        illust_b_cad_label: "3D CAD DRAWING",
+        illust_b_photo_label: "OLD DRAWING",
+        illust_b_cad_label: "PRECISE CAD DRAWING",
         panelB_tag: "FOR BUSINESSES",
         panelB_heading: "Engineering precision for your production.",
         panelB_problem: "Need to design custom 3D fixtures for production? Only have old 2D PDF documentation and need precise 3D models? Is your design team falling behind?",
