@@ -245,6 +245,7 @@
   }
   .illust-card svg{width:100%; height:100%; flex:1;}
   .illust-card img{width:100%; height:100%; flex:1; object-fit:contain; object-position:center; display:block; padding:10px; box-sizing:border-box;}
+  .illust-card img.cover{ object-fit:cover; padding:0; }
   .illust-card .illust-label{
     position:absolute; top:10px; left:10px;
     font-family:'JetBrains Mono', monospace; font-size:10px;
@@ -431,7 +432,7 @@
       <!-- real photo: original part to be redesigned -->
       <div class="illust-card photo">
         <span class="illust-label" data-i18n="illust_a_photo_label">PRED</span>
-        <img src="diel-povodny.jpg" alt="Pôvodný diel na prekreslenie">
+        <img src="diel-povodny.png" alt="Pôvodný diel na prekreslenie">
       </div>
 
       <div class="illust-arrow">
@@ -442,7 +443,7 @@
       <div class="illust-card cad">
         <span class="illust-label" data-i18n="illust_a_cad_label">3D NÁVRH</span>
         <div class="cad-chrome"><span></span><span></span><span></span></div>
-        <img src="diel-3d-navrh.jpg" alt="3D CAD návrh dielu">
+        <img src="diel-3d-navrh.png" alt="3D CAD návrh dielu">
       </div>
     </div>
 
@@ -474,7 +475,7 @@
       <!-- real photo: old/legacy documentation -->
       <div class="illust-card photo">
         <span class="illust-label" data-i18n="illust_b_photo_label">STARÝ VÝKRES</span>
-        <img src="vykres-stary.jpg" alt="Stará technická dokumentácia">
+        <img src="vykres-stary.jpg" alt="Stará technická dokumentácia" class="cover">
       </div>
 
       <div class="illust-arrow">
@@ -485,7 +486,7 @@
       <div class="illust-card cad">
         <span class="illust-label" data-i18n="illust_b_cad_label">PRESNÝ CAD VÝKRES</span>
         <div class="cad-chrome"><span></span><span></span><span></span></div>
-        <img src="vykres-novy.jpg" alt="Presný CAD výkres">
+        <img src="vykres-novy.png" alt="Presný CAD výkres">
       </div>
     </div>
 
